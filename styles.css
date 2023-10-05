@@ -1,0 +1,274 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar */
+
+nav{
+    background-color: #17a77f;
+    -webkit-box-shadow: 0px 3px 20px -6px rgba(0,0,0,0.46);
+    -moz-box-shadow: 0px 3px 20px -6px rgba(0,0,0,0.46);
+    box-shadow: 0px 3px 20px -6px rgba(0,0,0,0.46);
+}
+
+.nav-wrapper{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0.5rem;
+    align-items: center;
+}
+
+.navbar-links{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.navbar-links a{
+    margin-right: 2rem;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Tela login */
+
+.login-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(23, 167, 126, 0.489) 100%);
+}
+
+.login-wrapper h1{
+    color: #17a77f;
+}
+
+.modal{
+    display: inline-flex;
+    flex-direction: row;
+    width: 40rem;
+    padding: 2rem;
+    align-items: flex-start;
+    background: rgba(255, 255, 255, 0.19);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    justify-content: space-between;
+}   
+
+.Logincard form{
+    display: flex;
+    flex-direction: column;
+}
+
+form input{
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    padding: 0.15rem;
+}
+
+nav img{
+    width: 12rem;
+}
+
+/* Tela Home */
+
+.home-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(23, 167, 126, 0.489) 100%);
+}
+
+.logo-img{
+    user-select: none;
+    margin-top: 4rem;
+    width: 20rem;
+}
+
+.donation-options{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+.choose-card{
+    display: inline-block;
+    padding: 1.5rem;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.19);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-right: 2rem;
+    max-height: 300px;
+}
+
+.choose-card:hover{
+    transform: scale(1.05);
+    transition: all 0.4s ease;
+}
+
+.choose-card a{
+    text-decoration: none;
+    color: #17a77f;
+}
+
+.card-img{
+    object-fit: cover;
+    width: 22rem;
+    border-radius: 20px;
+    height: 180px;
+}
+
+/* Pagina de doações abertas */
+
+.donations-page{
+    display: flex;
+    height: 100vh;
+}
+
+.donations-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem; 
+}
+
+.donations-wrapper h1{
+    font-size: 25px;
+}
+
+.donations-wrapper form{
+    display: flex;
+    flex-direction: column;
+}
+
+.donations-wrapper form{
+    margin-top: 1.5rem;
+}
+
+form select{
+    border-radius: 10px;
+    margin-bottom: 1.3rem;
+}
+
+form label{
+    font-weight: lighter;
+    color: #656565;
+}
+
+.search{
+    border: solid 1px rgb(76, 76, 76);
+    margin-bottom: 1.3rem;
+}
+
+.submit-search{
+    cursor: pointer;
+    border: solid 1px rgb(76, 76, 76);
+}
+
+.doacoes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.doacao {
+    width: 300px;
+    margin: 20px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    max-height: 300px;
+}
+
+.doacao:hover{
+    transform: scale(1.010);
+}
+
+.titulo-doacao {
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.titulo-doacao span{
+    font-weight: lighter;
+    color: #656565;
+    font-style: italic;
+}
+
+.estado-doacao {
+    font-size: 14px;
+}
+
+.infos{
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+
+    font-weight: lighter;
+    color: #656565;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.imagem-doacao {
+    margin-top: 1rem;
+    width: 17rem;
+    border-radius: 20px;
+    height: 150px;
+}
+
+/* Tela de cadastro de doações */
+
+.cadastro-doacoes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.cadastro-doacoes form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.cadastro-doacoes form input{
+    border: solid 1px black;
+}
