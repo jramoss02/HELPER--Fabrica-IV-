@@ -3,84 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <title>HELPER</title>
 </head>
 <body>
-
     <div class="login-wrapper">
         <img class="logo-img" src="./imgs/logo.png" alt="">
-
-        <div class="modal">
-            <div class="Logincard">
-                <h1>Cadastro</h1>
-                <form action="./php/cadastro.php" method="POST">
-                    <label for="nome">Nome:</label>
-                    <input type="text" name="nome" required><br>
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" required><br>
-                    <label for="senha">Senha:</label>
-                    <input type="password" name="senha" required><br>
-                    <input style="cursor: pointer;" type="submit" value="Cadastrar">
-                </form>
-                <div id="mensagemPopUp" style="display: none;">
-                    <p id="mensagemTexto"></p>
-                </div>
+        <div class="loginMenu">
+            <div class="form">
+              <form action="./php/cadastro.php" method="POST" id="register-form" class="registerForm">
+                <input type="text" name="nome" placeholder="Seu nome" required/>
+                <input type="mail" name="email" placeholder="Email" required/>
+                <input type="password" name="senha" placeholder="Senha" required/>
+                <button type="submit">Cadastrar!</button>
+                <p class="message">Já tem uma conta? <a href="#">Faça o login!</a></p>
+              </form>
+              <div class="success-message" style="display: none">
+                Cadastro realizado com sucesso
+              </div>
+              <form action="./php/login.php" method="POST" class="loginForm">
+                <input type="email" name="email" placeholder="Email" required/>
+                <input type="password" name="senha" placeholder="Senha" required/>
+                <button type="submit">Entrar!</button>
+                <p class="message">Não tem uma conta? <a href="#">Cadastre-se aqui!</a></p>
+              </form>
             </div>
-        
-            <div class="Logincard">
-                <h1>Login</h1>
-                <form action="./php/login.php" method="POST">
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" required><br>
-                    <label for="senha">Senha:</label>
-                    <input type="password" name="senha" required><br>
-                    <input style="cursor: pointer;" type="submit" value="Entrar">
-                </form>
-            </div>
-        </div>
+          </div>      
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
-        // Função para mostrar o pop-up com a mensagem
-        function mostrarPopUp(mensagem) {
-            var mensagemPopUp = document.getElementById("mensagemPopUp");
-            var mensagemTexto = document.getElementById("mensagemTexto");
-            mensagemTexto.innerText = mensagem;
-            mensagemPopUp.style.display = "block";
-            setTimeout(function() {
-                mensagemPopUp.style.display = "none";
-            }, 3000);  // Fecha o pop-up após 3 segundos (ajuste conforme necessário)
-        }
-    
-        // Processar a resposta do servidor após o envio do formulário
-        document.querySelector("form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            var formData = new FormData(this);
-    
-            fetch("./php/cadastro.php", {
-                method: "POST",
-                body: formData
-            })
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(data) {
-                if (data.success) {
-                    mostrarPopUp(data.message);
-                } else {
-                    mostrarPopUp("Erro ao cadastrar: " + data.message);
-                }
-            })
-            .catch(function(error) {
-                mostrarPopUp("Erro ao se comunicar com o servidor.");
-            });
+    $(document).ready(function() {
+        $('.message a').click(function(){
+        $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
         });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+    const registerForm = document.getElementById("register-form");
+    const successMessage = document.querySelector(".success-message");
+
+    registerForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      successMessage.style.display = "block";
+      registerForm.reset(); // Limpa os campos do formulário
+
+      // Remova a mensagem de sucesso após 3 segundos
+      setTimeout(function() {
+        successMessage.style.display = "none";
+      }, 3000);
+    });
+    });
+
+    // Processar a resposta do servidor após o envio do formulário
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+
+        fetch("./php/cadastro.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            if (data.success) {
+                mostrarPopUp(data.message);
+            } else {
+                mostrarPopUp("Erro ao cadastrar: " + data.message);
+            }
+        })
+        .catch(function(error) {
+            mostrarPopUp("Erro ao se comunicar com o servidor.");
+        });
+    });
     </script>
-    
+
 </body>
 </html>

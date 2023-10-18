@@ -18,7 +18,7 @@
         $nome = $_POST['nome'];
         $descricao = $_POST['descricao'];
         $categoria = $_POST['categoria'];
-        $descricao = $_POST['endereco'];
+        $endereco = $_POST['endereco'];
         $categoria = $_POST['detalhes'];
         $estado = $_POST['estado'];
         
@@ -58,7 +58,11 @@
 </nav>
 
 <div class="cadastro-doacoes">
-    <h1>Cadastro de Doações</h1>
+
+    <div class="title-cadastro">
+        <h1>Cadastro de Doações</h1>
+        <p>Insira as informações e necessidades da sua doação!</p>
+    </div>
 
     <form method="POST" enctype="multipart/form-data">
         <label for="nome">Titulo:</label>
