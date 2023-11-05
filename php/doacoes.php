@@ -1,5 +1,10 @@
 <?php
+// Autor: José Ramos   
+// Versão: 1.03
+
+// Verifica se a requisição é um POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recupera os dados do formulário
     $nome = $_POST["nome"];
     $descricao = $_POST["descricao"];
     $preco = $_POST["preco"];
@@ -34,5 +39,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conexao->close();
 }
 ?>
-
-
